@@ -7,44 +7,40 @@ $(function () {
   var today = dayjs();
   $("#currentDay").text(today.format("dddd, MMM D"));
 
-
   // Stores each hour into an array
   var hours = [
-    $("hour-9"),
-    $("hour-10"),
-    $("hour-11"),
-    $("hour-12"),
-    $("hour-13"),
-    $("hour-14"),
-    $("hour-15"),
-    $("hour-16"),
-    $("hour-17"),
+    $("#hour-9"),
+    $("#hour-10"),
+    $("#hour-11"),
+    $("#hour-12"),
+    $("#hour-13"),
+    $("#hour-14"),
+    $("#hour-15"),
+    $("#hour-16"),
+    $("#hour-17"),
   ]
 
-  // Updates and color codes time blocks depending on the hour
-  for (each of hours) {
-  currentHour = parseInt($(".time-block").text())
-  if (currentHour < dayjs().hour()) {
-    $("textarea").addClass("past");
-  } else if (currentHour === dayjs().hour()) {
-    $("textarea").addClass("present");
-  } else {
-    $("textarea").addClass("future");
+  // Sets all timeblocks to an integer in military time for comparison with dayJS
+  for (var i = 0; i < hours.length; i++) {
+    var currentHour = parseInt($(hours[i]).text())
+    if (currentHour < 9) {
+      currentHour += 12;
+    }
+
+      // Updates and color codes time blocks depending on the hour
+    if (currentHour < dayjs().hour()) {
+      $(hours[i]).children("textarea").addClass("past");
+    } else if (currentHour === dayjs().hour()) {
+      $(hours[i]).children("textarea").addClass("present");
+    } else {
+      $(hours[i]).children("textarea").addClass("future");
+    }
   }
-}
   
-  // function saveInput(event) {
-  //   inputField = $(event.target).parent().children("textarea");
-  //   console.log(inputField)
-  //   saveHour = $(event.target).parent();
-  //   console.log(saveHour)
-  //   localStorage.setItem("save-input", JSON.stringify(inputField));
-  // }
+  var hourRow = $(".time-block");
+  hourRow.on("click", ".saveBtn", function(event){
 
-
-
-  // var saveButton = $(".saveBtn")
-  // saveButton.on("click", saveInput);
+  })
 
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
