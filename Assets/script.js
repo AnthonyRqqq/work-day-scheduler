@@ -47,9 +47,24 @@ $(function () {
     }
   }
 
+  // For later use on line 58, placed outside of event listener
+  var confirmed = false;
+
   // Uses event delegation to listen for the save button being clicked and saving content
   var timeBlockEl = $(".time-block");
   timeBlockEl.on("click", ".saveBtn", function(event) {
-    localStorage.setItem($(event.target).parent().attr("id"), $(event.target).siblings("textarea").val())
+    localStorage.setItem($(event.target).parent().attr("id"), $(event.target).siblings("textarea").val());
+
+    //Ensures only one confirmation message posted
+    if (!confirmed) {
+      confirmEl = $("<p>");
+      confirmEl.html("Event saved to localStorage " + "&#10003;");
+      confirmEl.css("disply", "block");
+      confirmEl.css("text-align", "center");
+      $("#hour-9").prepend(confirmEl);
+      confirmed = true;
+    }
+    
+
   })
 });
