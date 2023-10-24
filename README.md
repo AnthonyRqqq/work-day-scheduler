@@ -1,4 +1,4 @@
-# Work Day Scheduler Starter Code
+# Work Day Scheduler
 
 ![Screenshot of the scheduler](./Assets/screenshot.jpg)
 
