@@ -1,6 +1,6 @@
 # Work Day Scheduler Starter Code
 
-![Screenshot of the scheduler](./assets/screenshot.jpg)
+![Screenshot of the scheduler](./Assets/screenshot.jpg)
 
 This is a basic planner for organizing a work day.
 <br>I was provided with a basic structure for an hour block.
